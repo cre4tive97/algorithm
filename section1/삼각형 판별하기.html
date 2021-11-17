@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            // 가장 긴 막대의 길이 < 나머지 막대들의 길이의 합  => 삼각형 가능
+            function solution(a, b, c){
+                let answer="YES", longest;
+                let sum = a + b + c;
+                if ( a > b ) longest = a;
+                else longest = b;
+                if ( c > longest ) longest = c;
+                if ( (sum - longest) <= longest ) answer = "NO"
+
+                return answer;
+            }
+
+            console.log(solution(13, 33, 21));
+        </script>
+    </body>
+</html>
