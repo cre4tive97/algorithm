@@ -12,11 +12,17 @@
                 })
                 answer = min;
                 return answer;
+            }
 
+            // Math 객체의 메소드 활용 
+            function solution2(arr) {
+                let answer = Math.min(...arr);
+                return answer
             }
 
             let arr=[5, 7, 17, 3, 2, 9, 11];
             console.log(solution(arr));
+            console.log(solution2(arr))
         </script>
     </body>
 </html>
