@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(size, arr){
+                let answer = Array.from({length:size}, (v => v = 0));
+                    arr.forEach(item => {
+                        if(!answer.includes(item)) {
+                            answer.shift();
+                            answer.push(item);                            
+                        } else {
+                            answer.splice(answer.indexOf(item), 1)
+                            answer.push(item)
+                        }
+                    })
+                    answer.reverse()
+                return answer;
+            }
+
+            let arr=[1, 3, 2, 3, 6, 2, 3, 5, 7];
+            console.log(solution(5, arr));
+        </script>
+    </body>
+</html>
