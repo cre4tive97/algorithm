@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(times){
+                let answer=0;
+                let timeLine = [];
+                times.forEach(a => {
+                    timeLine.push([a[0], 1]);
+                    timeLine.push([a[1], 0]);
+                })
+                timeLine.sort((a, b) => {
+                    if(a[0] === b[0]) return a[1] - b[1];
+                    else return a[0] - b[0];
+                });
+                let cnt = 0;
+                timeLine.forEach(time => {
+                    if(time[1] === 1) cnt++;
+                    else cnt--;
+                    answer = Math.max(answer, cnt);
+                })
+                return answer;
+            }
+            let arr=[[14, 18], [12, 15], [15, 20], [20, 30], [5, 14]];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>
