@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function solution(genres, plays) {
+            let answer = [];
+                let genreHash = new Map();
+                for (let i=0; i<genres.length; i++) {
+                    if(genreHash.has(genres[i])) genreHash.set(genres[i], genreHash.get(genres[i]) + plays[i]);
+                    else genreHash.set(genres[i], plays[i]);
+                }
+                let Hash = new Map();
+                for (let i=0; i<genres.length; i++) Hash.set(i, [i, genres[i], plays[i]]);        
+                let sortSumOfPlays = [...genreHash].sort((a,b) => b[1] - a[1]);
+                let sortIndex = [...Hash.values()].sort((a,b) => b[2] - a[2]);
+                for (let [key, val] of sortSumOfPlays) {
+                    let cnt = 0;
+                    sortIndex.forEach(item => {
+                        if(item[1] === key && cnt < 2) {
+                            answer.push(item[0]);
+                            cnt++
+                        }
+                    })
+                }
+            return answer;
+        }
+        // console.log(solution(["classic", "pop", "classic", "classic", "pop"], [500, 600, 150, 800, 2500]));
+        console.log(solution(["classic", "pop", "classic", "classic","jazz","pop", "Rock", "jazz"], [500, 600, 150, 800, 1100, 2500, 100, 1000]));
+        
+    </script>
+</body>
+</html>
