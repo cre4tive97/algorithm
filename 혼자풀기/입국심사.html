@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function solution(n, times) {
+            let min = 0;
+            let max = n * Math.max(...times);
+            while (min <= max) {
+                let mid = Math.floor((min+max)/2);
+                let left = n;
+                    for (const time of times){
+                        if((left -= Math.floor(mid/time)) <= 0 ) break;
+                    }
+                if( left <= 0 ) max = mid - 1;
+                else min = mid + 1; 
+            }
+            return min;
+        }
+        console.log(solution(6, [7, 10]));
+    </script>
+</body>
+</html>
