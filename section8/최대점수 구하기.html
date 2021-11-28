@@ -6,17 +6,17 @@
     <body>
         <script>
             function solution(m, ps, pt){         
-                let answer=Number.MIN_SAFE_INTEGER;
+                let answer = Number.MIN_SAFE_INTEGER;
                 let n = ps.length;
-                    function DFS(L, Tsum, Ssum) {
-                        if(Tsum > m) return;
-                        if(L === n) answer = Math.max(answer, Ssum)
-                        else {
-                            DFS(L+1, Tsum + pt[L], Ssum + ps[L])
-                            DFS(L+1, Tsum, Ssum)
-                        }
+                function DFS(L, sSum, tSum) {
+                    if( tSum > m ) return;
+                    if( L === n ) answer = Math.max(answer, sSum)
+                    else {
+                        DFS(L+1, sSum + ps[L], tSum + pt[L])
+                        DFS(L+1, sSum, tSum)
                     }
-                DFS(0, 0, 0)
+                }
+                DFS(0, 0, 0);
                 return answer;
             }
 
